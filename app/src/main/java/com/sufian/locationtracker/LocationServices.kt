@@ -12,12 +12,14 @@ import java.util.*
 
 class LocationServices : Service() {
 
-    val NOTIFICATION_CHANNEL_ID = "location_channer"
+    private val NOTIFICATION_CHANNEL_ID = "location_tracker_id"
+    var isServiceStarted = false
+    var mLocation:Location? = null
 
     override fun onCreate() {
         super.onCreate()
 
-        val isServiceStarted = true
+        isServiceStarted = true
         val builder: NotificationCompat.Builder = NotificationCompat.Builder(
             this,
             NOTIFICATION_CHANNEL_ID

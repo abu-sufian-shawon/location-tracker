@@ -6,17 +6,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
 import com.sufian.locationtracker.Permission;
+import com.sufian.locationtracker.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if(!Permission.checkPermission(applicationContext)){
             Permission.requestPermission(this)
-        }else {
-            ContextCompat.startForegroundService(this, Intent(this, LocationServices::class.java)
-            )
+        }
+
+
+        binding.startService.setOnClickListener{
+            ContextCompat.startForegroundService(this, Intent(this, LocationServices::class.java))
+        }
+
+        binding.stopService.setOnClickListener{
+
         }
     }
 }
