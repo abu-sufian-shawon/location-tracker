@@ -14,19 +14,21 @@ interface ApiClient {
     fun updateLocation(): Call<LocationResponse>
 
     companion object {
-        var retrofit:Retrofit? = null
-        val logging = HttpLoggingInterceptor().apply {
+        private var retrofit: Retrofit? = null
+        private val logging = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
         }
 
-        fun getInstance(context:Context): Retrofit {
-            if(retrofit == null){
+        fun getInstance(context: Context): Retrofit {
+            if (retrofit == null) {
                 retrofit = Retrofit.Builder()
                     .baseUrl("https://howtodoandroid.com/apis/")
                     .client(OkHttpClient.Builder().addInterceptor(logging).build())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .
+                    .build()
+
             }
+            return retrofit!!
         }
     }
 }
