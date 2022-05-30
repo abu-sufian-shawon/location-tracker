@@ -1,6 +1,7 @@
 package com.sufian.locationtracker
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
@@ -13,12 +14,13 @@ import androidx.core.app.ActivityCompat
 
 class LocationHelper {
     private val TAG = "Coordinates"
-    var LOCATION_REFRESH_TINE = 1000
+    private var LOCATION_REFRESH_TINE = 1000
 
-    var LOCATION_REFRESH_DISTANCE = 0
+    private var LOCATION_REFRESH_DISTANCE = 0
 
 
 
+    @SuppressLint("MissingPermission")
     fun startListeningUserLocation(context:Context, myListener:MyLocationListener){
         Log.d(TAG, "startListeningUserLocation: is called...")
 

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.stopService.setOnClickListener{
-
+            startActivity(Intent(this, MapsActivity::class.java))
         }
     }
 }
